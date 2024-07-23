@@ -12,7 +12,7 @@ action: install
 default_weed:
   # version has to be quoted, else the the value will be treated as float and
   # trailing zeros may be trimmed.
-  version: '2.74'
+  version: "3.71"
   large_disk: False
   bind: 0.0.0.0
   ip: "{{ ansible_default_ipv4.address }}"
@@ -20,7 +20,7 @@ default_weed:
   user:
     name: seaweed
   # defaultReplication is set by a triplet, see
-  # https://github.com/chrislusf/seaweedfs/wiki/Replication#the-meaning-of-replication-type
+  # https://github.com/seaweedfs/seaweedfs/wiki/Replication#the-meaning-of-replication-type
   defaultReplication: "000"
   master:
     port: 9333
@@ -39,4 +39,4 @@ default_weed:
     encryptData: false
     additional_args:
 
-download_url: "https://github.com/chrislusf/seaweedfs/releases/download/{{ weed.version }}/{{ ansible_system|lower }}_{{ arch[ansible_architecture] }}{% if weed.large_disk %}_large_disk{% endif %}.tar.gz"
+download_url: "https://github.com/seaweedfs/seaweedfs/releases/download/{{ weed.version }}/{{ ansible_system|lower }}_{{ arch[ansible_architecture] }}{% if weed.large_disk %}_large_disk{% endif %}.tar.gz"

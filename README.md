@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/bmillemathias/ansible-role-seaweedfs/workflows/CI/badge.svg?event=push)](https://github.com/bmillemathias/ansible-role-seaweedfs/actions?query=workflow%3ACI)
 
-Provision installation of [seaweedfs](https://github.com/chrislusf/seaweedfs) a distributed object storage.
+Provision installation of [seaweedfs](https://github.com/seaweedfs/seaweedfs) a distributed object storage.
 This role installs the components master, volume and filer.
 
 This role was based on the role [egeneralov.seaweedfs](https://github.com/egeneralov/seaweedfs)
@@ -30,7 +30,7 @@ ansible-galaxy install --force git+https://github.com/bmillemathias/ansible-role
 
 ## Role Defaults Variables
 
-    weed.version: '2.18'
+    weed.version: '3.71'
     # large_disk is a specific build of seaweedfs to handle volume size bigger than 30 GB.
     weed.large_disk: False
     weed.bind: 0.0.0.0
@@ -58,7 +58,7 @@ ansible-galaxy install --force git+https://github.com/bmillemathias/ansible-role
   become: true
   roles:
     - role: ansible-role-seaweedfs
-      weed_version: 2.74
+      weed_version: 3.71
 ```
 
 MIT
