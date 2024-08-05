@@ -6,7 +6,7 @@
 - name: check some variables value
   assert:
     that:
-      - "action in ['install', 'uninstall']"
+      - "action_task in ['install', 'uninstall']"
 
 - name: define seaweed master host if not done
   add_host:
