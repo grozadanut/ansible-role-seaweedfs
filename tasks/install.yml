@@ -27,6 +27,8 @@
 - name: Download seaweed archive
   debug:
     msg: download_url= {{ download_url }}; weed.location= {{ weed.location }}; handler {{ weed_download }}
+
+- name: Download seaweed archive
   unarchive:
     src: "{{ download_url }}"
     dest: "{{ weed.location }}"
