@@ -38,5 +38,8 @@ default_weed:
     dir: "/opt/seaweedfs/{{ domain }}/filer"
     encryptData: false
     additional_args:
+  mount:
+    dir: "/mnt"
+    filer_path: "/"
 
 download_url: "https://github.com/seaweedfs/seaweedfs/releases/download/{{ weed.version }}/{{ ansible_system|lower }}_{{ arch[ansible_architecture] }}{% if weed.large_disk %}_large_disk{% endif %}.tar.gz"

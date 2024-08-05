@@ -1,0 +1,16 @@
+[Unit]
+Description=SeaweedFS mount
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart={{ weed.location }}/weed mount -dir {{ weed.mount.dir }} -filer.path= {{ weed.mount.filer_path }} \
+                                   -filer {% for host in groups['weed_filer'] %}{{ hostvars[host].ansible_default_ipv4.address }}:{{ weed.filer.port }}{%if not loop.last %},{% endif %}{% endfor %} \
+                                   {{ weed.mount.additional_args }}
+
+User={{ weed.user.name }}
+SyslogIdentifier=weed-mount
+
+[Install]
+WantedBy=multi-user.target

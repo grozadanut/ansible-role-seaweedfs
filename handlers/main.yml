@@ -18,3 +18,9 @@
     name: seaweedfs-filer.service
     state: "{% if weed_download.changed or weed_filer_service_file.changed %}restarted{% else %}started{% endif %}"
     daemon_reload: "{% if weed_filer_service_file.changed %}yes{% else %}no{% endif %}"
+
+- name: restart seaweedfs-mount.service
+  systemd:
+    name: seaweedfs-mount.service
+    state: "{% if weed_download.changed or weed_mount_service_file.changed %}restarted{% else %}started{% endif %}"
+    daemon_reload: "{% if weed_mount_service_file.changed %}yes{% else %}no{% endif %}"

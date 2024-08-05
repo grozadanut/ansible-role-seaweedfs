@@ -1,4 +1,35 @@
 ---
+- name: remove mount server
+  when: "'weed_mount' in group_names"
+  become: true
+  block:
+    - name: stop seaweedfs-mount.service
+      systemd:
+        name: seaweedfs-mount.service
+        enabled: false
+        state: stopped
+      ignore_errors: true
+
+    - name: remove seaweedfs-mount.service file
+      file:
+        path: /etc/systemd/system/seaweedfs-mount.service
+        state: absent
+      register: remove_service_file
+
+    - name: reload systemd
+      systemd:
+        daemon_reload: true
+      when:
+        - remove_service_file is changed
+
+    - name: remove mount datapath
+      file:
+        path: "{{ weed.mount.dir }}"
+        state: absent
+      when:
+        - wipe_data is defined
+        - wipe_data is true
+
 - name: remove filer server
   when: "'weed_filer' in group_names"
   become: true

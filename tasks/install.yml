@@ -135,5 +135,32 @@
         port: "{{ weed.filer.port | int }}"
         timeout: 30
 
+- name: configure mount server
+  when: "'weed_mount' in group_names"
+  become: true
+  block:
+    - name: Ensure mount datapath exists
+      file:
+        path: "{{ weed.mount.dir }}"
+        state: directory
+        owner: "{{ weed.user.name }}"
+        mode: "700"
+
+    - name: place seaweedfs-mount.service file
+      template:
+        src: seaweedfs-mount.service.j2
+        dest: /etc/systemd/system/seaweedfs-mount.service
+        mode: 0444
+      register: weed_mount_service_file
+      notify:
+        - restart seaweedfs-mount.service
+
+    - name: manage seaweedfs-mount.service runtime
+      systemd:
+        name: seaweedfs-mount.service
+        enabled: true
+        state: started
+        daemon_reload: true
+
 - name: Flush Handlers
   meta: flush_handlers

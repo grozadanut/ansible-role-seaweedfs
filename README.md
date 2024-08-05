@@ -15,7 +15,7 @@ When used in a play targetting group `all` the role will use all nodes and deplo
 * a volume server on each node
 * a filer server on the first node of the group
 
-You can also define groups `weed_master`, `weed_volume` and `weed_filer`, to choose
+You can also define groups `weed_master`, `weed_volume` and `weed_filer`, `weed_mount`, to choose
 where to deploy the server master and filer accordingly.
 In such case, the volume servers will be configured correctly to contact the master server(s).
 
@@ -25,7 +25,8 @@ None
 
 ## Install role
 ```
-ansible-galaxy install --force git+https://github.com/bmillemathias/ansible-role-seaweedfs.git,main
+ansible-galaxy install --force git+https://github.com/grozadanut/ansible-role-seaweedfs.git,main
+
 ```
 
 ## Role Defaults Variables
@@ -48,6 +49,8 @@ ansible-galaxy install --force git+https://github.com/bmillemathias/ansible-role
     weed.filer.port: 8889
     weed.filer.dir: "/opt/seaweedfs/{{ domain }}/filer"
     weed.filer.encryptData: false
+    weed.mount.dir: "/mnt"
+    weed.mount.filer_path: "/"
 
 ## License
 
