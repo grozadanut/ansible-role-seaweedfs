@@ -7,7 +7,7 @@ arch:
 
 domain: weed.domain.tld
 # to uninstall the role, define action: uninstall
-action: install
+action_task: install
 
 default_weed:
   # version has to be quoted, else the the value will be treated as float and

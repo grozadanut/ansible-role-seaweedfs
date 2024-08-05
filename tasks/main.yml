@@ -37,5 +37,5 @@
   delegate_to: "{{ item }}"
   loop: "{{ groups['weed_mount'] }}"
 
-- name: "Run action {{ action }}"
-  include_tasks: "{{ action }}.yml"
+- name: "Run action {{ action_task }}"
+  include_tasks: "{{ action_task }}.yml"
