@@ -43,4 +43,4 @@ default_weed:
     filer_path: "/"
     additional_args:
 
-download_url: "https://github.com/seaweedfs/seaweedfs/releases/download/{{ weed.version }}/{{ ansible_system|lower }}_{{ arch[ansible_architecture] }}{% if weed.large_disk %}_large_disk{% endif %}.tar.gz"
+download_url: "https://github.com/seaweedfs/seaweedfs/releases/download/{{ weed.version }}/{{ ansible_system|lower }}_amd64{% if weed.large_disk %}_large_disk{% endif %}.tar.gz"
