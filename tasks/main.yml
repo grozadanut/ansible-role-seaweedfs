@@ -32,5 +32,10 @@
   delegate_to: "{{ item }}"
   loop: "{{ groups['weed_filer'] }}"
 
+- name: gather fact from weed mount
+  setup:
+  delegate_to: "{{ item }}"
+  loop: "{{ groups['weed_mount'] }}"
+
 - name: "Run action {{ action }}"
   include_tasks: "{{ action }}.yml"
