@@ -26,7 +26,7 @@
 
 - name: debug seaweed archive
   debug:
-    msg: "https://github.com/seaweedfs/seaweedfs/releases/download/{{ weed.version }}/{{ ansible_system|lower }}_{{ arch[ansible_architecture] }}{% if weed.large_disk %}_large_disk{% endif %}.tar.gz"
+    msg: "{{ weed.version }}/{{ ansible_system|lower }}_{{ arch }} dbg {{ ansible_architecture }}{% if weed.large_disk %}_large_disk{% endif %}.tar.gz"
 
 - name: debug url
   debug:
